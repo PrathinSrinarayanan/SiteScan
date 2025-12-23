@@ -6,8 +6,10 @@ import { base44 } from '@/api/base44Client';
 import { Button } from '@/components/ui/button';
 import QuickNoteButton from './components/QuickNoteButton';
 import ChatBot from './components/ChatBot';
+import { ThemeProvider, useTheme } from './components/ThemeProvider';
 
-export default function Layout({ children, currentPageName }) {
+function LayoutContent({ children, currentPageName }) {
+    const { themeColor } = useTheme();
     const navItems = [
         { name: 'Capture', icon: Camera, path: 'Capture' },
         { name: 'Gallery', icon: Grid3x3, path: 'Gallery' },
@@ -15,14 +17,14 @@ export default function Layout({ children, currentPageName }) {
     ];
 
     return (
-        <div className="min-h-screen bg-[#F0F7F4]">
+        <div className="min-h-screen" style={{ backgroundColor: `${themeColor}08` }}>
             {/* Navigation */}
-            <nav className="bg-gradient-to-r from-[#1B4D3E] to-[#2D5F4C] shadow-lg">
+            <nav className="shadow-lg" style={{ background: `linear-gradient(to right, ${themeColor}, ${themeColor}dd)` }}>
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <div className="flex items-center justify-between h-16">
                         {/* Logo */}
                         <Link to={createPageUrl('Capture')} className="flex items-center gap-3 group">
-                            <div className="w-10 h-10 bg-[#5DB075] rounded-lg flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                            <div className="w-10 h-10 rounded-lg flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform" style={{ backgroundColor: `${themeColor}cc` }}>
                                 <Camera className="w-6 h-6 text-white" />
                             </div>
                             <span className="text-white font-serif text-xl font-bold hidden md:block">
@@ -70,5 +72,13 @@ export default function Layout({ children, currentPageName }) {
             {/* ChatBot */}
             <ChatBot />
             </div>
+            );
+            }
+
+            export default function Layout({ children, currentPageName }) {
+            return (
+            <ThemeProvider>
+                <LayoutContent children={children} currentPageName={currentPageName} />
+            </ThemeProvider>
             );
             }
