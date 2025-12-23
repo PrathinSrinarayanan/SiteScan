@@ -1,0 +1,54 @@
+{
+  "name": "Artifact",
+  "type": "object",
+  "properties": {
+    "id_number": {
+      "type": "string",
+      "description": "Unique artifact identification number"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name or title of the artifact"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the artifact"
+    },
+    "photo_url": {
+      "type": "string",
+      "description": "URL of the artifact photo"
+    },
+    "extracted_text": {
+      "type": "string",
+      "description": "Text, symbols, or inscriptions extracted from the artifact image via OCR"
+    },
+    "latitude": {
+      "type": "number",
+      "description": "GPS latitude coordinate"
+    },
+    "longitude": {
+      "type": "number",
+      "description": "GPS longitude coordinate"
+    },
+    "discovery_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time when artifact was discovered"
+    },
+    "location_accuracy": {
+      "type": "number",
+      "description": "GPS accuracy in meters"
+    },
+    "color": {
+      "type": "string",
+      "default": "#2D5F4C",
+      "description": "Artifact theme color"
+    }
+  },
+  "required": [
+    "id_number",
+    "photo_url",
+    "latitude",
+    "longitude"
+  ]
+}
